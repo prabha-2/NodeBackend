@@ -1,14 +1,13 @@
 version: 0.2
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 928808255181.dkr.ecr.us-east-1.amazonaws.com
+
 phases:
   pre_build:
     commands:
       - echo Logging in to DockerHub...
       - docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASS
-      - REPOSITORY_URI=928808255181.dkr.ecr.us-east-1.amazonaws.com/awsdevops
+      - REPOSITORY_URI="docker.io/anujsharma1990/backend"
       - CONTAINER_NAME="backend-container"
       - IMAGE_TAG="latest"
-      
   build:
     commands:
       - echo Build started on `date`
